@@ -1,0 +1,36 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import HomeScreen from './screens/Home';
+import DetailScreen from './screens/Detail';
+import MapScreen from './screens/Map';
+import ReportSightingScreen from './screens/ReportSighting';
+import RecentSightingsScreen from './screens/RecentSightings';
+import CustomizeScreen from './screens/Customize';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import firebaseConfig from './firebase'; // Import config
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
+export const db = getFirestore();
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
+          <Stack.Screen name="Map" component={MapScreen} />
+          <Stack.Screen name="ReportSighting" component={ReportSightingScreen} />
+          <Stack.Screen name="RecentSightings" component={RecentSightingsScreen} />
+          <Stack.Screen name="Customize" component={CustomizeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
