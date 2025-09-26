@@ -1,0 +1,9 @@
+// Replace with your Firebase config
+export default {
+  apiKey: "your-api-key",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project",
+  storageBucket: "your-project.appspot.com",
+  messagingSenderId: "123",
+  appId: "your-app-id"
+};
